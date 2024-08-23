@@ -10,3 +10,10 @@ def crear(request):
         if form.is_valid():
             form.save()
             return redirect('listar')
+    form = TareaForm()
+    return render(request, 'crear.html',{'form':form})
+
+
+def listar(request):
+    tareas = Tarea.objects.all()
+    return render(request,'listar.html',{'tareas':tareas})
